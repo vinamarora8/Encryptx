@@ -11,7 +11,20 @@ int main(int argc, char *argv[]) {
 	}
 
 	// Initial regs
+	
+	// Password confirmation
 	char *key = getpass("Enter key: ");
+	char *key_safe = malloc(strlen(key));
+	strcpy(key_safe, key);
+	
+	char *key_conf = getpass("Confirm key: ");
+	key = key_safe;
+
+	if ( strcmp(key, key_conf) != 0 ) {
+		printf("Keys don't match. Try again.\n");
+		return 0;
+	}
+
 	int key_size = strlen(key);
 
 	// Open input and output files

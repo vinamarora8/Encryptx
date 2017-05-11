@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 int main(int argc, char *argv[]) {
 	// Ensure arguments
-	if (argc != 3) {
-		fprintf(stderr, "Usage: %s <filename> <key>\n", argv[0]);
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
 		return 0;
 	}
 
 	// Initial regs
-	char *key = argv[2];
+	char *key = getpass("Enter key: ");
 	int key_size = strlen(key);
 
 	// Open input and output files
